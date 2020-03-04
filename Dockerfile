@@ -1,4 +1,4 @@
-FROM kalilinux/kalilinux/kali-rolling:latest
+FROM kalilinux/kali-rolling:latest
 
 MAINTAINER N1eko <contacto@n1eko.space>
 
@@ -9,7 +9,7 @@ ENV TERM xterm-256color
 RUN rm -fR /var/lib/apt/ && \
     apt-get clean && \
     apt-get update -y && \
-    apt-get install -y software-properties-common kali-linux-full --fix-missing && \
+    apt-get install -y software-properties-common kali-linux kali-linux-web --fix-missing && \
     echo 'VERSION_CODENAME=kali-rolling' >> /etc/os-release
 
 # Add NodeJS repo
@@ -22,12 +22,9 @@ RUN apt-get install -y git colordiff colortail unzip vim tmux xterm zsh curl tel
 RUN git clone https://github.com/arialdomartini/oh-my-git.git ~/.oh-my-git && \
     echo source ~/.oh-my-git/prompt.sh >> /etc/profile
 
-# secLists!
-RUN git clone https://github.com/danielmiessler/SecLists /usr/share/seclists
-
 # w3af
 RUN git clone https://github.com/andresriancho/w3af.git /opt/w3af && \
-    apt-get install -y libssl-dev libxml2-dev libxslt1-dev zlib1g-dev python-dev python-pybloomfiltermmap ; \
+    apt-get install -y python2.7 python-pip ; \
     /opt/w3af/w3af_console ; \
     bash /tmp/w3af_dependency_install.sh ; \
     echo 'export PATH=/opt/w3af:$PATH' >> /etc/profile
