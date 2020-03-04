@@ -1,6 +1,6 @@
-FROM kalilinux/kali-linux-docker:latest
+FROM kalilinux/kalilinux/kali-rolling:latest
 
-MAINTAINER Xavi Torelló <info@xaviertorello.cat>
+MAINTAINER N1eko <contacto@n1eko.space>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm-256color
@@ -16,7 +16,7 @@ RUN rm -fR /var/lib/apt/ && \
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 
 # Some system tools
-RUN apt-get install -y git colordiff colortail unzip vim tmux xterm zsh curl telnet strace ltrace tmate less build-essential wget python3-setuptools python3-pip tor proxychains proxychains4 zstd net-tools bash-completion iputils-tracepath nodejs npm yarnpkg
+RUN apt-get install -y git colordiff colortail unzip vim tmux xterm zsh curl telnet strace ltrace tmate less build-essential wget python3-setuptools python3-pip tor proxychains proxychains4 zstd net-tools bash-completion iputils-tracepath nodejs yarnpkg
 
 # Oh-my-git!
 RUN git clone https://github.com/arialdomartini/oh-my-git.git ~/.oh-my-git && \
