@@ -24,7 +24,7 @@ RUN git clone https://github.com/arialdomartini/oh-my-git.git ~/.oh-my-git && \
 
 # w3af
 RUN git clone https://github.com/andresriancho/w3af.git /opt/w3af && \
-    apt-get install -y python2.7 python-pip ; \
+    apt-get install -y python2.7 python-pip build-essential libssl-dev libffi-dev python-dev libxml2-dev libxslt1-dev zlib1g-dev ; \
     /opt/w3af/w3af_console ; \
     bash /tmp/w3af_dependency_install.sh ; \
     echo 'export PATH=/opt/w3af:$PATH' >> /etc/profile
